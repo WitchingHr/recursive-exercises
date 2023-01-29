@@ -124,6 +124,42 @@
       return [...fibsRec(n - 1), fibsRec(n - 1)[n - 2] + fibsRec(n - 1)[n - 3]];
     }
     
+
+    let array = [5, 2, 4, 3, 1, 6, 9, 7, 12];
+
+    function mergeSort(array) {
+      if (array.length === 1) {
+        return array;
+      }
+      if (array.length !== 2) {
+        let a = mergeSort(array.slice(0, Math.floor(array.length / 2)));
+        let b = mergeSort(array.slice(Math.floor(array.length / 2)));
+        let sorted = [];
+        for (const number in array) {
+          if (a.length === 0) {
+            sorted.push(b.shift());
+            continue;
+          }
+          if (b.length === 0) {
+            sorted.push(a.shift());
+            continue;
+          }
+          if (b[0] < a[0]) {
+            sorted.push(b.shift());
+          } else {
+            sorted.push(a.shift());
+          }
+        }
+        return sorted;
+      }
+      if (array[0] < array[1]) {
+        return array;
+      } else {
+        array.push(array.shift());
+        return array;
+      }
+    }
+
   </script>
 </body>
 </html>
