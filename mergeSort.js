@@ -1,4 +1,4 @@
-function mergeSort(array) {
+export default function mergeSort(array) {
   // Base case
   if (array.length === 1) {
     return array;
@@ -11,16 +11,16 @@ function mergeSort(array) {
 
     // Sort
     const sorted = [];
-    for (const number of array) {
+    array.forEach(() => {
 
       // If arrays uneven
       if (a.length === 0) {
         sorted.push(b.shift());
-        continue;
+        return;
       }
       if (b.length === 0) {
         sorted.push(a.shift());
-        continue;
+        return;
       }
 
       // Sorting
@@ -29,7 +29,7 @@ function mergeSort(array) {
       } else {
         sorted.push(a.shift());
       }
-    }
+    });
     return sorted;
   }
 
@@ -38,10 +38,9 @@ function mergeSort(array) {
 
     // If already sorted
     return array;
-  } else {
-
-    // Flip pieces
-    array.push(array.shift());
-    return array;
   }
+
+  // Flip pieces
+  array.push(array.shift());
+  return array;
 }
